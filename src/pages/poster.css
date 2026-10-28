@@ -1,0 +1,414 @@
+/* Nyomtatható házirend: két A4-es lap, minden méret mm-ben és pt-ben. */
+
+/* Nevesített oldal: a weboldal többi részének nyomtatását nem érinti */
+@page poster {
+  size: A4;
+  margin: 0;
+}
+
+@page poster-a3 {
+  size: A3;
+  margin: 0;
+}
+
+body:has(.poster) {
+  background: #d9dee3;
+  overflow-x: auto;
+}
+
+.poster {
+  --p-green: #14532d;
+  --p-green-mid: #15803d;
+  --p-green-soft: #dcfce7;
+  --p-muted: #f0f7f3;
+  --p-red: #b91c1c;
+  --p-red-soft: #fee2e2;
+  --p-ink: #0f172a;
+  --p-text: #334155;
+  --p-line: #d6e4db;
+  page: poster;
+  padding: 10mm 0;
+  color: var(--p-ink);
+  font-family: var(--font-body);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.poster * {
+  animation: none !important;
+}
+
+.sheet {
+  display: flex;
+  flex-direction: column;
+  width: 210mm;
+  height: 297mm;
+  margin: 0 auto 10mm;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2mm 8mm rgba(15, 23, 42, .25);
+}
+
+/* A3: a lap √2-szeres nagyítása; a magasság egy hajszállal kisebb, hogy a kerekítés ne törjön új oldalt */
+.poster--a3 {
+  page: poster-a3;
+}
+
+.poster--a3 .sheet {
+  height: 296.6mm;
+  zoom: 1.41421356;
+}
+
+@media print {
+  body:has(.poster) { background: #fff; }
+  .poster { padding: 0; }
+  .sheet { margin: 0; box-shadow: none; break-after: page; }
+  .sheet:last-child { break-after: auto; }
+}
+
+/* ---- Fejléc sáv ---- */
+.band {
+  display: grid;
+  grid-template-columns: 1fr 92mm;
+  gap: 8mm;
+  align-items: center;
+  padding: 12mm 14mm 11mm;
+  background: var(--p-green);
+  color: #fff;
+}
+
+.band__org {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  margin-bottom: 6mm;
+  font-size: 10.5pt;
+  color: #d1e7d8;
+}
+
+.crest {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  padding: 1.2mm;
+  border-radius: 2mm;
+  background: #fff;
+}
+
+.crest img {
+  width: auto;
+  height: 15mm;
+}
+
+.band__title {
+  margin: 0;
+  color: #fff;
+  font: 600 36pt/1 var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.band__sub {
+  margin-top: 2.5mm;
+  font: 600 16pt/1.2 var(--font-heading);
+  color: #bbf7d0;
+}
+
+.band__place {
+  margin-top: 3mm;
+  font-size: 11pt;
+  color: #d1e7d8;
+}
+
+.band__art {
+  overflow: hidden;
+  border: 1mm solid rgba(255, 255, 255, .92);
+  border-radius: 3mm;
+  background: #eef6ee;
+}
+
+.band__art .scene {
+  border-radius: 0;
+}
+
+.band__art .scene-sun,
+.band__art .scene-clouds {
+  display: none;
+}
+
+/* ---- Piros sáv ---- */
+.alert-strip {
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+  margin: 8mm 14mm 0;
+  padding: 5mm 7mm;
+  border-radius: 3mm;
+  background: var(--p-red);
+  color: #fff;
+}
+
+.alert-strip svg {
+  flex: none;
+  width: 13mm;
+  height: 13mm;
+  stroke-width: 2.2;
+}
+
+.alert-strip strong {
+  display: block;
+  font: 600 19pt/1.15 var(--font-heading);
+}
+
+.alert-strip span {
+  display: block;
+  margin-top: 1mm;
+  font-size: 12pt;
+}
+
+/* ---- A legfontosabb szabályok ---- */
+.key-rules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6.5mm 9mm;
+  margin: 9mm 14mm 0;
+  padding: 0;
+  list-style: none;
+}
+
+.key-rules li {
+  display: grid;
+  grid-template-columns: 14mm 1fr;
+  gap: 4mm;
+  align-items: start;
+}
+
+.key-rules__icon {
+  display: grid;
+  place-items: center;
+  width: 14mm;
+  height: 14mm;
+  border-radius: 50%;
+  background: var(--p-green-soft);
+  color: var(--p-green);
+}
+
+.key-rules__icon svg {
+  width: 7.5mm;
+  height: 7.5mm;
+  stroke-width: 2;
+}
+
+.key-rules strong {
+  display: block;
+  font: 600 13pt/1.2 var(--font-heading);
+}
+
+.key-rules li > span:last-child > span {
+  display: block;
+  margin-top: 1mm;
+  font-size: 10.5pt;
+  line-height: 1.35;
+  color: var(--p-text);
+}
+
+.key-rules li.is-red .key-rules__icon {
+  background: var(--p-red-soft);
+  color: var(--p-red);
+}
+
+.key-rules li.is-red strong {
+  color: var(--p-red);
+}
+
+/* ---- Információs dobozok ---- */
+.info-boxes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6mm;
+  margin: 9mm 14mm 0;
+}
+
+.info-box {
+  display: flex;
+  gap: 4mm;
+  align-items: flex-start;
+  padding: 4.5mm 5mm;
+  border-left: 1.5mm solid var(--p-green-mid);
+  border-radius: 0 2.5mm 2.5mm 0;
+  background: var(--p-muted);
+}
+
+.info-box svg {
+  flex: none;
+  width: 8mm;
+  height: 8mm;
+  color: var(--p-green-mid);
+}
+
+.info-box strong {
+  display: block;
+  font: 600 12.5pt/1.2 var(--font-heading);
+}
+
+.info-box span {
+  display: block;
+  margin-top: 1mm;
+  font-size: 10.5pt;
+  line-height: 1.35;
+  color: var(--p-text);
+}
+
+.info-box--red {
+  border-left-color: var(--p-red);
+  background: #fef2f2;
+}
+
+.info-box--red svg,
+.info-box--red strong {
+  color: var(--p-red);
+}
+
+/* ---- Lábléc ---- */
+.sheet-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8mm;
+  margin-top: auto;
+  padding: 6mm 14mm 9mm;
+  border-top: .4mm solid var(--p-line);
+  background: var(--p-muted);
+}
+
+.sheet-foot__text {
+  display: grid;
+  gap: .8mm;
+  font-size: 10pt;
+  color: var(--p-text);
+}
+
+.sheet-foot__text strong {
+  font: 600 11.5pt var(--font-heading);
+  color: var(--p-ink);
+}
+
+.qr {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  font-size: 9pt;
+  line-height: 1.35;
+  color: var(--p-text);
+}
+
+.qr img {
+  width: 24mm;
+  height: 24mm;
+  padding: 1.5mm;
+  border-radius: 1.5mm;
+  background: #fff;
+}
+
+/* ---- 2. oldal: a teljes házirend ---- */
+.band--small {
+  grid-template-columns: auto 1fr 38mm;
+  gap: 6mm;
+  padding: 8mm 14mm 6mm;
+}
+
+.crest--small img {
+  height: 13mm;
+}
+
+.band__org-line {
+  font-size: 10pt;
+  color: #d1e7d8;
+}
+
+.band__title--small {
+  margin-top: 1mm;
+  font-size: 22pt;
+}
+
+.band--small .band__place {
+  margin-top: 1.5mm;
+  font-size: 10pt;
+}
+
+.band__dog {
+  width: 38mm;
+  height: auto;
+  overflow: visible;
+}
+
+.rules-intro {
+  margin: 5mm 14mm 0;
+  font-size: 10pt;
+  line-height: 1.4;
+  color: var(--p-text);
+}
+
+.rules-columns {
+  margin: 4.5mm 14mm 0;
+  column-count: 2;
+  column-gap: 9mm;
+  font-size: 8.5pt;
+  line-height: 1.3;
+}
+
+.chapter {
+  margin-bottom: 3.2mm;
+}
+
+.chapter h2 {
+  margin: 0 0 1.6mm;
+  font: 600 10.5pt/1.25 var(--font-heading);
+  color: var(--p-green);
+  break-after: avoid;
+}
+
+.chapter ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chapter li {
+  display: grid;
+  grid-template-columns: 6.5mm 1fr;
+  margin-bottom: 1mm;
+  break-inside: avoid;
+}
+
+.chapter__n {
+  color: #64748b;
+  font-variant-numeric: tabular-nums;
+}
+
+.chapter li.is-important {
+  margin-left: -2.4mm;
+  padding-left: 1.6mm;
+  border-left: .8mm solid var(--p-red);
+  font-weight: 600;
+}
+
+.chapter li.is-important .chapter__n {
+  color: var(--p-red);
+}
+
+.sheet-foot--small {
+  padding: 4mm 14mm 6mm;
+}
+
+.sheet-foot--small .sheet-foot__text {
+  font-size: 8.5pt;
+}
+
+.sheet-foot--small .sheet-foot__text strong {
+  font-size: 10pt;
+}
+
+.qr--small img {
+  width: 17mm;
+  height: 17mm;
+}

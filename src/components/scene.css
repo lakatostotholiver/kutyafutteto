@@ -1,0 +1,227 @@
+/* Rajzolt jelenetek animációi. Mozgáscsökkentésnél statikus, nappali kép marad. */
+
+.scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  background: #eef6ee;
+}
+
+/* Csak az animált elemek forognak/mozognak a saját befoglaló dobozukhoz képest;
+   a pozicionáló transform attribútumokat ez nem érinti */
+.scene-sun,
+.scene-clouds,
+.scene-sun-spin,
+.scene-star,
+.scene-heart,
+.dog,
+.dog__tail,
+.dog__eye,
+.dog__tongue,
+.ball-x,
+.ball-y {
+  transform-box: fill-box;
+}
+
+/* ---- Nappal-éjszaka ciklus (20 mp) ---- */
+.scene-night,
+.scene-stars,
+.scene-moon,
+.scene-dim,
+.scene-glow {
+  opacity: 0;
+}
+
+.scene-night,
+.scene-stars,
+.scene-moon {
+  animation: night 20s ease-in-out infinite;
+}
+
+.scene-dim {
+  animation: dim 20s ease-in-out infinite;
+}
+
+.scene-glow {
+  animation: lamps 20s ease-in-out infinite;
+}
+
+.scene-sun {
+  transform-origin: center;
+  animation: sun 20s ease-in-out infinite;
+}
+
+@keyframes night {
+  0%, 30% { opacity: 0; }
+  45%, 85% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes dim {
+  0%, 30% { opacity: 0; }
+  45%, 85% { opacity: 0.42; }
+  100% { opacity: 0; }
+}
+
+@keyframes lamps {
+  0%, 36% { opacity: 0; }
+  40% { opacity: 0.6; }
+  41% { opacity: 0.2; }
+  43%, 88% { opacity: 1; }
+  94%, 100% { opacity: 0; }
+}
+
+@keyframes sun {
+  0%, 28% { transform: translateY(0); opacity: 1; }
+  45%, 86% { transform: translateY(150px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.scene-star {
+  animation: twinkle 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.35; }
+  to { opacity: 1; }
+}
+
+.scene-clouds {
+  animation: drift 26s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from { transform: translateX(-12px); }
+  to { transform: translateX(22px); }
+}
+
+.scene-sun-spin {
+  transform-origin: center;
+  animation: spin-slow 30s linear infinite;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Kutyák ---- */
+.dog__tail {
+  transform-origin: 90% 95%;
+  animation: wag 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes wag {
+  from { transform: rotate(-14deg); }
+  to { transform: rotate(16deg); }
+}
+
+.dog__eye {
+  transform-origin: center;
+  animation: blink 4.6s infinite;
+}
+
+@keyframes blink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.1); }
+}
+
+.dog__tongue {
+  transform-origin: 50% 0;
+  animation: pant 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pant {
+  from { transform: scaleY(0.85); }
+  to { transform: scaleY(1.2); }
+}
+
+/* Ugrás, amikor a labda odaér: a labda 2,4 mp alatt ér át egyik kutyától a másikig */
+.hop-a,
+.hop-b {
+  animation: hop 4.8s ease-out infinite;
+}
+
+.hop-b {
+  animation-delay: 2.4s;
+}
+
+@keyframes hop {
+  0% { transform: translateY(0); }
+  4% { transform: translateY(-16px); }
+  9%, 100% { transform: translateY(0); }
+}
+
+.dog__shadow {
+  transform-origin: center;
+}
+
+/* ---- Labda ---- */
+.ball-x {
+  animation: ball-x 2.4s ease-in-out infinite alternate;
+}
+
+.ball-x--kids {
+  animation-name: ball-x-kids;
+}
+
+@keyframes ball-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(80px); }
+}
+
+@keyframes ball-x-kids {
+  from { transform: translateX(0); }
+  to { transform: translateX(118px); }
+}
+
+.ball-y {
+  animation: ball-y 2.4s infinite;
+}
+
+@keyframes ball-y {
+  0% { transform: translateY(0); animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1); }
+  50% { transform: translateY(-62px); animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.3); }
+  100% { transform: translateY(0); }
+}
+
+/* ---- Szívecskék ---- */
+.scene-heart {
+  opacity: 0;
+  transform-origin: center;
+  animation: heart 3.2s ease-out infinite;
+}
+
+@keyframes heart {
+  0% { opacity: 0; transform: translateY(0) scale(0.6); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-46px) scale(1.1); }
+}
+
+/* ---- Fajtaportrék a gyerek-ajánlóban ---- */
+.bob {
+  animation: bob 2.8s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene *,
+  .bob {
+    animation: none !important;
+  }
+}
+
+/* Nyomtatott változat: álló kép, a kivágás arányával */
+.scene--still {
+  aspect-ratio: auto;
+}
+
+.scene--still *,
+.scene--still.scene * {
+  animation: none !important;
+}
