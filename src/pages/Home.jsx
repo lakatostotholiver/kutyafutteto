@@ -47,7 +47,7 @@ const FAQ = [
   },
   {
     q: 'Hol jelezhető, ha valami elromlott?',
-    a: 'Rongálást, nem működő lámpát vagy más hibát a fenntartónál, a Törökbálinti Városgondnokságnál lehet bejelenteni.',
+    a: 'Rongálást, nem működő lámpát vagy más hibát az üzemeltetőnél, a Törökbálinti Városgondnokságnál lehet bejelenteni.',
   },
 ]
 
@@ -95,7 +95,7 @@ export default function Home() {
               <div className="facts__row">
                 <dt>
                   <BuildingIcon />
-                  Fenntartó
+                  Üzemeltető
                 </dt>
                 <dd>{OPERATOR.name}</dd>
               </div>
@@ -177,7 +177,7 @@ export default function Home() {
         <div className="container faq-layout">
           <div className="faq-layout__aside">
             <h2 id="gyik-title">Gyakori kérdések</h2>
-            <p className="section__intro">Nem találta a választ? Keresse a kutyafuttató fenntartóját.</p>
+            <p className="section__intro">Nem találta a választ? Keresse a kutyafuttató üzemeltetőjét.</p>
             <div className="panel-box contact-box">
               <p>
                 <strong>{OPERATOR.name}</strong>

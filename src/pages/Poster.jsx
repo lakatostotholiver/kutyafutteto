@@ -1,4 +1,4 @@
-import { EMERGENCY, OPERATOR, PARK } from '../data/location.js'
+import { OPERATOR, PARK } from '../data/location.js'
 import { LAST_UPDATED, RULE_GROUPS, SMOKING_BAN } from '../data/rules.js'
 import './poster.css'
 
@@ -47,18 +47,6 @@ function CrossSign() {
   return (
     <Sign>
       <path d="M41 27h18v14h14v18H59v14H41V59H27V41h14z" fill={RED} stroke={INK} strokeWidth="1" />
-    </Sign>
-  )
-}
-
-function LampSign() {
-  return (
-    <Sign>
-      {/* a fénykúp a lámpa alatt, mellette a hold */}
-      <path d="M49 42h20l11 33H40z" fill="#c9c9c9" />
-      <path d="M29 77h20v-5h-6V38c0-4 2-6 6-6h7v-6h-7c-7 0-12 5-12 12v34h-8z" fill={INK} />
-      <path d="M50 34h18l3 8H47z" fill={INK} />
-      <path d="M27 31a8.5 8.5 0 1 0 6 14 7.5 7.5 0 0 1-6-14z" fill={INK} />
     </Sign>
   )
 }
@@ -136,12 +124,8 @@ const [smokingHead] = keepHyphen(SMOKING_BAN).split(' szigorúan tilos')
 
 const SIGN_ROWS = [
   {
-    Pic: LampSign,
-    text: 'A LED-lámpák miatt a kutyafuttató este is használható, de kizárólag kutyával való játékra, más célra nem!',
-  },
-  {
     Pic: PlaySign,
-    text: 'A kutyafuttatót mindenki saját felelősségére használhatja! A mindenkori törökbálinti együttélési szabályokat kötelező betartani!',
+    text: 'A kutyafuttatót kizárólag kutyával való játékra, mindenki saját felelősségére használhatja! A mindenkori törökbálinti együttélési szabályokat kötelező betartani!',
   },
   {
     Pic: SmokingSign,
@@ -204,12 +188,8 @@ export default function Poster() {
                 <CrossSign />
               </div>
               <div className="row__text">
-                <strong>A legközelebbi orvosi rendelő helye:</strong>
-                <span>
-                  {EMERGENCY.clinic} • {EMERGENCY.clinicHours}
-                </span>
-                <strong>Baleset esetén hívható telefonszámok:</strong>
-                <span>Központi segélyhívó: {EMERGENCY.phone}</span>
+                <strong>Baleset esetén hívható telefonszám:</strong>
+                <span>Központi segélyhívó: 112</span>
               </div>
             </div>
 

@@ -63,7 +63,7 @@ export default function Rules() {
               <a href="#jogszabalyok">Jogszabályi háttér</a>
             </li>
             <li>
-              <a href="#fenntarto">Fenntartó</a>
+              <a href="#uzemelteto">Üzemeltető</a>
             </li>
           </ul>
           <Link className="legal__back" to="/">
@@ -129,8 +129,8 @@ export default function Rules() {
             </ul>
           </section>
 
-          <section id="fenntarto" aria-labelledby="fenntarto-title">
-            <h2 id="fenntarto-title">Fenntartó</h2>
+          <section id="uzemelteto" aria-labelledby="uzemelteto-title">
+            <h2 id="uzemelteto-title">Üzemeltető</h2>
             <p>
               <strong>{OPERATOR.name}</strong>
               <br />

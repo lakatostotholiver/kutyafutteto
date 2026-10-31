@@ -23,14 +23,7 @@ export const CITY = {
   regulationsUrl: 'https://www.torokbalint.hu/app/cms/TorokbalintApp/index?id=45',
 }
 
-// A plakát „Baleset esetén” sora (a város sportpálya-tábláinak adatai)
-export const EMERGENCY = {
-  clinic: 'Köztársaság tér 10.',
-  clinicHours: 'Munkanapokon: 8-17 óra között',
-  phone: '112',
-}
-
-// A kutyafuttató fenntartója (a tbvg.hu adatai)
+// A kutyafuttató üzemeltetője (a tbvg.hu adatai)
 export const OPERATOR = {
   name: 'Törökbálinti Városgondnokság',
   address: '2045 Törökbálint, Munkácsy Mihály utca 79.',

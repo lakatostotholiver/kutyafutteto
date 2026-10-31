@@ -13,7 +13,7 @@ export const RULE_GROUPS = [
     id: 'altalanos',
     title: 'Általános tudnivalók',
     items: [
-      { text: 'A kutyafuttató fenntartója a Törökbálinti Városgondnokság.' },
+      { text: 'A kutyafuttató üzemeltetője a Törökbálinti Városgondnokság.' },
       { text: 'A kutyafuttatót mindenki használhatja, aki a házirendet betartja. A területre lépéssel a látogató a házirendet elfogadja.' },
       {
         text: 'A futtató kizárólag a kutyával való játékra szolgál, más célra nem használható. A területen kerékpározni, rollerezni és labdajátékot játszani tilos, más állatot bevinni nem szabad.',
@@ -78,7 +78,7 @@ export const RULE_GROUPS = [
       { text: 'A gazdánál mindig legyen elegendő zacskó.' },
       { text: 'Szemetelni tilos. A hulladékot hulladékgyűjtőbe kell dobni vagy el kell vinni. A cigarettacsikk is hulladék, és mérgező a kutyákra.', important: true },
       { text: 'A futtató területét és a világítást kímélni kell, a területet rendezett állapotban kell elhagyni.' },
-      { text: 'Rongálást vagy hibát, például nem működő lámpát, a fenntartónál, a Törökbálinti Városgondnokságnál lehet bejelenteni.' },
+      { text: 'Rongálást vagy hibát, például nem működő lámpát, az üzemeltetőnél, a Törökbálinti Városgondnokságnál lehet bejelenteni.' },
     ],
   },
   {
