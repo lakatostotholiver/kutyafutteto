@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import PosterDownloads from '../components/PosterDownloads.jsx'
 import { CITY, OPERATOR } from '../data/location.js'
-import { LAST_UPDATED, LEGAL_NOTES, RULE_GROUPS } from '../data/rules.js'
+import { LAST_UPDATED, LEGAL_NOTES, RULE_GROUPS, SMOKING_BAN } from '../data/rules.js'
 
 // A szabályok sorszáma a fejezeteken át folytatódik
 const NUMBERED_GROUPS = (() => {
@@ -83,6 +83,9 @@ export default function Rules() {
             <p>
               <strong>A futtató kizárólag a kutyával való játékra szolgál, más célra nem használható.</strong> A mindenkori
               törökbálinti együttélési szabályokat kötelező betartani.
+            </p>
+            <p>
+              <strong>{SMOKING_BAN}</strong>
             </p>
           </div>
 

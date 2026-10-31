@@ -238,6 +238,7 @@ a.usage-table__note { color: var(--color-primary-hover); }
 
 /* ---------- Piros figyelmeztetés és letöltés ---------- */
 .alert { margin-top: var(--space-5); padding: var(--space-4) var(--space-5); border-radius: var(--radius-sm); background: var(--color-destructive); color: #fff; font-size: 1.0625rem; }
+.alert p + p { margin-top: var(--space-3); }
 .alert strong { display: block; font-family: var(--font-heading); font-weight: 600; font-size: 1.1875rem; line-height: 1.3; margin-bottom: var(--space-1); }
 .download-box { display: grid; gap: var(--space-4); margin-top: var(--space-5); padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-muted); }
 .legal__body .download-box__title { margin: 0 0 var(--space-1); padding: 0; border: 0; font-size: 1.125rem; }
@@ -348,7 +349,7 @@ a.usage-table__note { color: var(--color-primary-hover); }
   .section--tight { padding-top: var(--space-7); }
   .location { grid-template-columns: 1.5fr 1fr; gap: var(--space-6); }
   .location__map { height: 460px; }
-  .tips { grid-template-columns: repeat(4, 1fr); }
+  .tips { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -7,6 +7,7 @@ const GROUPS = [
     rows: [
       { label: 'Kutyával való játékra', status: 'Megengedett', tone: 'ok' },
       { label: 'Bármilyen más célra', status: 'Nem használható', tone: 'red' },
+      { label: 'Dohányzás, e-cigaretta, hevített dohánytermék és más, dohányzást imitáló termék', status: 'Szigorúan tilos', tone: 'red' },
     ],
   },
   {

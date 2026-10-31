@@ -8,7 +8,7 @@ import PosterDownloads from '../components/PosterDownloads.jsx'
 import UsageTable from '../components/UsageTable.jsx'
 import { BREEDS } from '../data/breeds.js'
 import { CITY, OPERATOR, OSM_ROUTE_URL, OSM_VIEW_URL, PARK } from '../data/location.js'
-import { KEY_RULES, POSTER_PDFS } from '../data/rules.js'
+import { KEY_RULES, POSTER_PDFS, SMOKING_BAN } from '../data/rules.js'
 
 const TEASER_DOGS = ['puli', 'dalmata', 'husky'].map((id) => BREEDS.find((b) => b.id === id))
 
@@ -22,6 +22,7 @@ const FAQ = [
     ),
   },
   { q: 'Mire használható a terület?', a: 'Kizárólag a kutyával való játékra, más célra nem.' },
+  { q: 'Szabad dohányozni vagy e-cigarettázni a futtatón?', a: `Nem. ${SMOKING_BAN}` },
   {
     q: 'Kell pórázt használni?',
     a: 'A futtatón belül a kutya póráz nélkül is lehet. A futtató területén kívül viszont mindig pórázon kell vezetni.',

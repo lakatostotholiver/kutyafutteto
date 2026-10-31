@@ -215,13 +215,3 @@
     animation: none !important;
   }
 }
-
-/* Nyomtatott változat: álló kép, a kivágás arányával */
-.scene--still {
-  aspect-ratio: auto;
-}
-
-.scene--still *,
-.scene--still.scene * {
-  animation: none !important;
-}

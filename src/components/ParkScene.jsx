@@ -39,12 +39,11 @@ function Beam({ x, dir = 1 }) {
 }
 
 // A futtató este: nappal-éjszaka ciklus, este felkapcsolnak a LED-lámpák, két kutya labdázik
-// still: mozdulatlan, nappali kép (nyomtatáshoz); viewBox: kivágás
-export default function ParkScene({ still = false, viewBox = '0 0 480 360' }) {
+export default function ParkScene() {
   return (
     <svg
-      className={`scene${still ? ' scene--still' : ''}`}
-      viewBox={viewBox}
+      className="scene"
+      viewBox="0 0 480 360"
       role="img"
       aria-label="Animáció: két kutya labdázik a futtatón, este a LED-lámpák világítanak"
     >

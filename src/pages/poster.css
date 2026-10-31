@@ -1,13 +1,14 @@
-/* Nyomtatható házirend: két A4-es lap, minden méret mm-ben és pt-ben. */
+/* Nyomtatható házirend: két fekvő A4-es lap, minden méret mm-ben és pt-ben.
+   A kinézet a város sportpálya-tábláit követi: zöld keret, fehér felirat, piros körös táblák. */
 
 /* Nevesített oldal: a weboldal többi részének nyomtatását nem érinti */
 @page poster {
-  size: A4;
+  size: A4 landscape;
   margin: 0;
 }
 
 @page poster-a3 {
-  size: A3;
+  size: A3 landscape;
   margin: 0;
 }
 
@@ -17,15 +18,10 @@ body:has(.poster) {
 }
 
 .poster {
-  --p-green: #14532d;
-  --p-green-mid: #15803d;
-  --p-green-soft: #dcfce7;
-  --p-muted: #f0f7f3;
-  --p-red: #b91c1c;
-  --p-red-soft: #fee2e2;
-  --p-ink: #0f172a;
-  --p-text: #334155;
-  --p-line: #d6e4db;
+  --p-green: #6da869;
+  --p-red: #dd1f25;
+  --p-ink: #231f20;
+  --p-corner: 15mm;
   page: poster;
   padding: 10mm 0;
   color: var(--p-ink);
@@ -34,19 +30,17 @@ body:has(.poster) {
   print-color-adjust: exact;
 }
 
-.poster * {
-  animation: none !important;
-}
-
 .sheet {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 210mm;
-  height: 297mm;
+  gap: 3.5mm;
+  width: 297mm;
+  height: 210mm;
   margin: 0 auto 10mm;
+  padding: 5.5mm;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 2mm 8mm rgba(15, 23, 42, .25);
+  background: var(--p-green);
 }
 
 /* A3: a lap √2-szeres nagyítása; a magasság egy hajszállal kisebb, hogy a kerekítés ne törjön új oldalt */
@@ -55,316 +49,254 @@ body:has(.poster) {
 }
 
 .poster--a3 .sheet {
-  height: 296.6mm;
+  height: 209.7mm;
   zoom: 1.41421356;
 }
 
 @media print {
   body:has(.poster) { background: #fff; }
   .poster { padding: 0; }
-  .sheet { margin: 0; box-shadow: none; break-after: page; }
+  .sheet { margin: 0; break-after: page; }
   .sheet:last-child { break-after: auto; }
 }
 
-/* ---- Fejléc sáv ---- */
-.band {
-  display: grid;
-  grid-template-columns: 1fr 92mm;
-  gap: 8mm;
-  align-items: center;
-  padding: 12mm 14mm 11mm;
-  background: var(--p-green);
-  color: #fff;
-}
-
-.band__org {
-  display: flex;
-  align-items: center;
-  gap: 3mm;
-  margin-bottom: 6mm;
-  font-size: 10.5pt;
-  color: #d1e7d8;
-}
-
-.crest {
-  display: inline-grid;
-  place-items: center;
+/* ---- Fejléc: fehér körvonal, felül lekerekítve ---- */
+.head {
   flex: none;
-  padding: 1.2mm;
-  border-radius: 2mm;
+  box-sizing: border-box;
+  height: 33mm;
+  padding-top: 3.5mm;
+  border: 1mm solid #fff;
+  border-radius: var(--p-corner) var(--p-corner) 0 0;
+  text-align: center;
+}
+
+.head__title {
+  margin: 0;
+  color: #fff;
+  font: 700 50pt/1 var(--font-body);
+  letter-spacing: 0;
+  text-shadow: .55mm .55mm 0 var(--p-ink);
+}
+
+.head__sub {
+  margin-top: 1.2mm;
+  color: #fff;
+  font: 600 13.5pt/1.1 var(--font-body);
+}
+
+.head--small {
+  height: 21mm;
+  padding-top: 2.4mm;
+}
+
+.head--small .head__title {
+  font-size: 32pt;
+  text-shadow: .4mm .4mm 0 var(--p-ink);
+}
+
+/* ---- Fehér tábla: alul lekerekítve, jobbra a fenntartó oszlopa ---- */
+.body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 43mm;
+  overflow: hidden;
+  border: .3mm solid var(--p-ink);
+  border-radius: 0 0 var(--p-corner) var(--p-corner);
   background: #fff;
 }
 
-.crest img {
-  width: auto;
+.rows {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.row {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 34mm minmax(0, 1fr);
+  align-items: center;
+  min-height: 0;
+}
+
+.row--alert {
+  flex: 1.9;
+}
+
+.row__pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.sign {
+  display: block;
+  width: 15mm;
   height: 15mm;
 }
 
-.band__title {
-  margin: 0;
-  color: #fff;
-  font: 600 36pt/1 var(--font-heading);
-  letter-spacing: -0.02em;
+.row--alert .sign {
+  width: 19mm;
+  height: 19mm;
 }
 
-.band__sub {
-  margin-top: 2.5mm;
-  font: 600 16pt/1.2 var(--font-heading);
-  color: #bbf7d0;
+.row__label {
+  margin-bottom: 1mm;
+  color: var(--p-red);
+  font: 700 10pt/1.05 var(--font-body);
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.band__place {
-  margin-top: 3mm;
-  font-size: 11pt;
-  color: #d1e7d8;
-}
-
-.band__art {
-  overflow: hidden;
-  border: 1mm solid rgba(255, 255, 255, .92);
-  border-radius: 3mm;
-  background: #eef6ee;
-}
-
-.band__art .scene {
-  border-radius: 0;
-}
-
-.band__art .scene-sun,
-.band__art .scene-clouds {
-  display: none;
-}
-
-/* ---- Piros sáv ---- */
-.alert-strip {
+/* A sorok közti zöld vonal a szöveg oszlopában, bal végén ponttal */
+.row__text {
+  position: relative;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0 5mm 0 0;
+  font: 700 15pt/1.14 var(--font-body);
+}
+
+p.row__text {
+  display: block;
+  align-content: center;
+}
+
+.row + .row .row__text::before {
+  content: '';
+  position: absolute;
+  inset: -0.4mm 0 auto 0;
+  height: .8mm;
+  background: var(--p-green);
+}
+
+.row + .row .row__text::after {
+  content: '';
+  position: absolute;
+  top: -1.2mm;
+  left: -1.2mm;
+  width: 2.4mm;
+  height: 2.4mm;
+  border-radius: 50%;
+  background: var(--p-green);
+}
+
+.row__text strong {
+  color: var(--p-red);
+  font-weight: 700;
+}
+
+.row__text em {
+  color: var(--p-red);
+  font-style: normal;
+}
+
+/* ---- Jobb oldali oszlop ---- */
+.side {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 5mm;
-  margin: 8mm 14mm 0;
-  padding: 5mm 7mm;
-  border-radius: 3mm;
-  background: var(--p-red);
-  color: #fff;
+  gap: 2.4mm;
+  padding: 4mm 2.5mm;
+  border-left: 1mm solid var(--p-green);
+  text-align: center;
 }
 
-.alert-strip svg {
+.side__org {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font: 400 10pt/1.15 var(--font-body);
+}
+
+.side__org img {
+  width: 29mm;
+  height: 29mm;
+  margin-bottom: 1.5mm;
+  object-fit: contain;
+}
+
+.side__org strong {
+  font-weight: 700;
+  font-size: 10.5pt;
+}
+
+.side__rule {
   flex: none;
-  width: 13mm;
-  height: 13mm;
-  stroke-width: 2.2;
+  width: 30mm;
+  height: .7mm;
+  border-radius: 50%;
+  background: var(--p-green);
 }
 
-.alert-strip strong {
-  display: block;
-  font: 600 19pt/1.15 var(--font-heading);
-}
-
-.alert-strip span {
-  display: block;
-  margin-top: 1mm;
-  font-size: 12pt;
-}
-
-/* ---- A legfontosabb szabályok ---- */
-.key-rules {
+.side__contact {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6.5mm 9mm;
-  margin: 9mm 14mm 0;
+  gap: 1mm;
+  margin: 0;
   padding: 0;
   list-style: none;
+  font: 400 7.6pt/1.15 var(--font-body);
 }
 
-.key-rules li {
-  display: grid;
-  grid-template-columns: 14mm 1fr;
-  gap: 4mm;
-  align-items: start;
-}
-
-.key-rules__icon {
-  display: grid;
-  place-items: center;
-  width: 14mm;
-  height: 14mm;
-  border-radius: 50%;
-  background: var(--p-green-soft);
-  color: var(--p-green);
-}
-
-.key-rules__icon svg {
-  width: 7.5mm;
-  height: 7.5mm;
-  stroke-width: 2;
-}
-
-.key-rules strong {
-  display: block;
-  font: 600 13pt/1.2 var(--font-heading);
-}
-
-.key-rules li > span:last-child > span {
-  display: block;
-  margin-top: 1mm;
-  font-size: 10.5pt;
-  line-height: 1.35;
-  color: var(--p-text);
-}
-
-.key-rules li.is-red .key-rules__icon {
-  background: var(--p-red-soft);
-  color: var(--p-red);
-}
-
-.key-rules li.is-red strong {
-  color: var(--p-red);
-}
-
-/* ---- Információs dobozok ---- */
-.info-boxes {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 6mm;
-  margin: 9mm 14mm 0;
-}
-
-.info-box {
+.side__contact li {
   display: flex;
-  gap: 4mm;
-  align-items: flex-start;
-  padding: 4.5mm 5mm;
-  border-left: 1.5mm solid var(--p-green-mid);
-  border-radius: 0 2.5mm 2.5mm 0;
-  background: var(--p-muted);
-}
-
-.info-box svg {
-  flex: none;
-  width: 8mm;
-  height: 8mm;
-  color: var(--p-green-mid);
-}
-
-.info-box strong {
-  display: block;
-  font: 600 12.5pt/1.2 var(--font-heading);
-}
-
-.info-box span {
-  display: block;
-  margin-top: 1mm;
-  font-size: 10.5pt;
-  line-height: 1.35;
-  color: var(--p-text);
-}
-
-.info-box--red {
-  border-left-color: var(--p-red);
-  background: #fef2f2;
-}
-
-.info-box--red svg,
-.info-box--red strong {
-  color: var(--p-red);
-}
-
-/* ---- Lábléc ---- */
-.sheet-foot {
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 8mm;
+}
+
+.side__contact svg {
+  width: 2.8mm;
+  height: 2.8mm;
+}
+
+.side__qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: auto;
-  padding: 6mm 14mm 9mm;
-  border-top: .4mm solid var(--p-line);
-  background: var(--p-muted);
+  font: 600 7.6pt/1.1 var(--font-body);
 }
 
-.sheet-foot__text {
-  display: grid;
-  gap: .8mm;
-  font-size: 10pt;
-  color: var(--p-text);
+.side__qr img {
+  width: 19mm;
+  height: 19mm;
 }
 
-.sheet-foot__text strong {
-  font: 600 11.5pt var(--font-heading);
-  color: var(--p-ink);
-}
-
-.qr {
+/* ---- Második lap: a teljes házirend három hasábban ---- */
+.body--rules {
   display: flex;
-  align-items: center;
-  gap: 4mm;
-  font-size: 9pt;
-  line-height: 1.35;
-  color: var(--p-text);
+  flex-direction: column;
 }
 
-.qr img {
-  width: 24mm;
-  height: 24mm;
-  padding: 1.5mm;
-  border-radius: 1.5mm;
-  background: #fff;
-}
-
-/* ---- 2. oldal: a teljes házirend ---- */
-.band--small {
-  grid-template-columns: auto 1fr 38mm;
-  gap: 6mm;
-  padding: 8mm 14mm 6mm;
-}
-
-.crest--small img {
-  height: 13mm;
-}
-
-.band__org-line {
-  font-size: 10pt;
-  color: #d1e7d8;
-}
-
-.band__title--small {
-  margin-top: 1mm;
-  font-size: 22pt;
-}
-
-.band--small .band__place {
-  margin-top: 1.5mm;
-  font-size: 10pt;
-}
-
-.band__dog {
-  width: 38mm;
-  height: auto;
-  overflow: visible;
-}
-
-.rules-intro {
-  margin: 5mm 14mm 0;
-  font-size: 10pt;
-  line-height: 1.4;
-  color: var(--p-text);
-}
-
-.rules-columns {
-  margin: 4.5mm 14mm 0;
-  column-count: 2;
-  column-gap: 9mm;
-  font-size: 8.5pt;
-  line-height: 1.3;
+.chapters {
+  flex: 1;
+  min-height: 0;
+  padding: 4.5mm 7mm 0;
+  column-count: 3;
+  column-gap: 6mm;
+  column-fill: balance;
+  font-size: 8.8pt;
+  line-height: 1.2;
 }
 
 .chapter {
-  margin-bottom: 3.2mm;
+  break-inside: avoid;
+  margin-bottom: 2.4mm;
 }
 
 .chapter h2 {
-  margin: 0 0 1.6mm;
-  font: 600 10.5pt/1.25 var(--font-heading);
-  color: var(--p-green);
-  break-after: avoid;
+  margin: 0 0 1mm;
+  padding-bottom: .5mm;
+  border-bottom: .6mm solid var(--p-green);
+  color: var(--p-ink);
+  font: 700 11.5pt/1.15 var(--font-body);
+  letter-spacing: 0;
 }
 
 .chapter ol {
@@ -375,40 +307,57 @@ body:has(.poster) {
 
 .chapter li {
   display: grid;
-  grid-template-columns: 6.5mm 1fr;
-  margin-bottom: 1mm;
-  break-inside: avoid;
+  grid-template-columns: 6.5mm minmax(0, 1fr);
+  padding: .35mm 0;
 }
 
 .chapter__n {
-  color: #64748b;
   font-variant-numeric: tabular-nums;
 }
 
 .chapter li.is-important {
-  margin-left: -2.4mm;
-  padding-left: 1.6mm;
-  border-left: .8mm solid var(--p-red);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .chapter li.is-important .chapter__n {
   color: var(--p-red);
 }
 
-.sheet-foot--small {
-  padding: 4mm 14mm 6mm;
+.foot {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8mm;
+  margin: 0 12mm;
+  padding: 1.5mm 0 2mm;
+  border-top: .6mm solid var(--p-green);
+  font-size: 8.4pt;
+  line-height: 1.2;
 }
 
-.sheet-foot--small .sheet-foot__text {
-  font-size: 8.5pt;
+.foot__org {
+  display: flex;
+  align-items: center;
+  gap: 2.5mm;
 }
 
-.sheet-foot--small .sheet-foot__text strong {
-  font-size: 10pt;
+.foot__org img {
+  width: 13mm;
+  height: 13mm;
+  object-fit: contain;
 }
 
-.qr--small img {
-  width: 17mm;
-  height: 17mm;
+.foot__org span,
+.foot__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.foot__org strong {
+  font-weight: 700;
+}
+
+.foot__info {
+  text-align: right;
 }

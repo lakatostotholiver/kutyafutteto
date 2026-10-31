@@ -1,8 +1,12 @@
 // A kutyafuttató házirendje. A webes oldal és a nyomtatható PDF is ebből készül.
 
-import { Ban, Dog, Eye, HeartPulse, PawPrint, Syringe, Trash2, Users } from 'lucide-react'
+import { Ban, CigaretteOff, Dog, Eye, HeartPulse, PawPrint, Syringe, Trash2, Users } from 'lucide-react'
 
-export const LAST_UPDATED = '2026. október 28.'
+export const LAST_UPDATED = '2026. október 31.'
+
+// A dohányzási tilalom szövege: a házirend, a főoldal és a plakát is ezt használja
+export const SMOKING_BAN =
+  'A kutyafuttató területén dohányozni, valamint e-cigarettát, hevített dohányterméket és más, dohányzást imitáló terméket használni szigorúan tilos.'
 
 export const RULE_GROUPS = [
   {
@@ -61,7 +65,8 @@ export const RULE_GROUPS = [
       { text: 'Más kutyáját csak a gazdája engedélyével szabad megsimogatni vagy megetetni.' },
       { text: 'Ha a kutyák féltékenyen őrzik a labdát vagy más játékot, a játékot el kell tenni.' },
       { text: 'A kutya által kiásott gödröket távozás előtt vissza kell temetni, mert balesetveszélyesek.' },
-      { text: 'Üveget, éles vagy törékeny tárgyat bevinni tilos. A területen dohányozni és alkoholt fogyasztani tilos.' },
+      { text: SMOKING_BAN, important: true },
+      { text: 'Üveget, éles vagy törékeny tárgyat bevinni tilos. A területen alkoholt fogyasztani tilos.' },
       { text: 'A környéken lakók nyugalma érdekében kerülni kell a hangoskodást, különösen este. A folyamatosan ugató kutyát meg kell nyugtatni, vagy el kell vinni sétálni.' },
     ],
   },
@@ -102,6 +107,7 @@ export const RULE_GROUPS = [
 export const KEY_RULES = [
   { Icon: Trash2, title: 'Kutyapiszok összeszedése', text: 'A kutya ürülékét össze kell szedni, a futtatón belül és kívül is.' },
   { Icon: Ban, title: 'Szemetelni tilos', text: 'A hulladékot hulladékgyűjtőbe kell dobni. A cigarettacsikk is hulladék.', red: true },
+  { Icon: CigaretteOff, title: 'Dohányozni szigorúan tilos', text: 'Az e-cigaretta, a hevített dohánytermék és más, dohányzást imitáló termék használata is.', red: true },
   { Icon: Dog, title: 'Póráz a futtatón kívül', text: 'A futtató területén kívül a kutyát pórázon kell vezetni.' },
   { Icon: PawPrint, title: 'Csak kutyával való játékra', text: 'A futtató más célra nem használható.', red: true },
   { Icon: Syringe, title: 'Oltás és mikrochip', text: 'Csak érvényes veszettség elleni oltással és mikrochippel rendelkező kutya vihető be.' },
