@@ -14,7 +14,7 @@ const TEASER_DOGS = ['puli', 'dalmata', 'husky'].map((id) => BREEDS.find((b) => 
 
 const FAQ = [
   {
-    q: 'Hol található a kutyafuttató?',
+    q: 'Hol található a Diósdi úti kutyafuttató?',
     a: (
       <>
         Törökbálinton, a temető és a Diósdi út közötti zöld területen. A pontos hely a <a href="#helyszin">térképen</a> látható.
@@ -54,14 +54,14 @@ const FAQ = [
 export default function Home() {
   return (
     <>
-      <title>Kutyafuttató – Törökbálint Város Önkormányzata</title>
+      <title>{`${PARK.name} – Törökbálint Város Önkormányzata`}</title>
 
       <section className="hero" aria-labelledby="hero-title">
         <div className="container hero__grid">
           <div className="hero__text">
-            <h1 id="hero-title">Kutyafuttató a temető és a Diósdi út között</h1>
+            <h1 id="hero-title">{PARK.name}</h1>
             <p className="hero__lead">
-              Törökbálint kutyafuttatója a temető és a Diósdi út közötti zöld területen található. A területen a kutyák
+              A Diósdi úti kutyafuttató Törökbálinton, a temető és a Diósdi út közötti zöld területen található. A területen a kutyák
               póráz nélkül játszhatnak.
             </p>
 
@@ -177,7 +177,7 @@ export default function Home() {
         <div className="container faq-layout">
           <div className="faq-layout__aside">
             <h2 id="gyik-title">Gyakori kérdések</h2>
-            <p className="section__intro">Nem találta a választ? Keresse a kutyafuttató üzemeltetőjét.</p>
+            <p className="section__intro">Nem találta a választ? Keresse a Diósdi úti kutyafuttató üzemeltetőjét.</p>
             <div className="panel-box contact-box">
               <p>
                 <strong>{OPERATOR.name}</strong>

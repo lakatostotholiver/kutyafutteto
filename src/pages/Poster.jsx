@@ -125,7 +125,7 @@ const [smokingHead] = keepHyphen(SMOKING_BAN).split(' szigorúan tilos')
 const SIGN_ROWS = [
   {
     Pic: PlaySign,
-    text: 'A kutyafuttatót kizárólag kutyával való játékra, mindenki saját felelősségére használhatja! A mindenkori törökbálinti együttélési szabályokat kötelező betartani!',
+    text: 'A Diósdi úti kutyafuttatót kizárólag kutyával való játékra, mindenki saját felelősségére használhatja! A mindenkori törökbálinti együttélési szabályokat kötelező betartani!',
   },
   {
     Pic: SmokingSign,
@@ -135,9 +135,9 @@ const SIGN_ROWS = [
       </>
     ),
   },
-  { Pic: GlassSign, text: 'A kutyafuttatón szeszes italt fogyasztani, üveget és törékeny tárgyat bevinni tilos!' },
+  { Pic: GlassSign, text: 'A Diósdi úti kutyafuttatón szeszes italt fogyasztani, üveget és törékeny tárgyat bevinni tilos!' },
   { Pic: WasteSign, text: 'A kutya ürülékét össze kell szedni, szemetelni tilos!' },
-  { Pic: LeashSign, text: 'A kutyafuttató területén kívül a kutyát mindig pórázon kell vezetni!' },
+  { Pic: LeashSign, text: 'A Diósdi úti kutyafuttató területén kívül a kutyát mindig pórázon kell vezetni!' },
   { Pic: VaccineSign, text: 'Csak egészséges, veszettség ellen oltott, mikrochippel ellátott kutya vihető be!' },
 ]
 
@@ -167,12 +167,12 @@ export default function Poster() {
 
   return (
     <div className={`poster${a3 ? ' poster--a3' : ''}`}>
-      <title>Kutyafuttató – házirend – Törökbálint Város Önkormányzata</title>
+      <title>{`${PARK.name} – házirend – Törökbálint Város Önkormányzata`}</title>
       <meta name="robots" content="noindex" />
 
       <section className="sheet">
         <header className="head">
-          <h1 className="head__title">Kutyafuttató</h1>
+          <h1 className="head__title">{PARK.name}</h1>
           <p className="head__sub">Házirend · {PARK.place}</p>
         </header>
 
@@ -235,7 +235,7 @@ export default function Poster() {
 
       <section className="sheet">
         <header className="head head--small">
-          <h1 className="head__title">Kutyafuttató – teljes házirend</h1>
+          <h1 className="head__title">{PARK.name} – teljes házirend</h1>
         </header>
 
         <div className="body body--rules">

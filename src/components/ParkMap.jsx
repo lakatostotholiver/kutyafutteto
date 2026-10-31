@@ -21,12 +21,12 @@ export default function ParkMap() {
         maxZoom={19}
       />
 
-      <Marker position={PARK.position} icon={pin} title="Kutyafuttató" alt="Kutyafuttató">
+      <Marker position={PARK.position} icon={pin} title={PARK.name} alt={PARK.name}>
         <Tooltip direction="right" offset={[16, -24]} permanent className="map-label">
-          Kutyafuttató
+          {PARK.name}
         </Tooltip>
         <Popup>
-          <strong>Kutyafuttató</strong>
+          <strong>{PARK.name}</strong>
           <br />
           {PARK.placeDetail}
           <br />

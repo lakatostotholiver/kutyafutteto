@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 
+import { PARK } from '../data/location.js'
+
 // A lábléc a gyumolcsfa.tbesemeny.hu láblécének másolata; csak az utolsó,
-// oldalspecifikus oszlop szól a kutyafuttatóról.
+// oldalspecifikus oszlop szól a Diósdi úti kutyafuttatóról.
 
 const CITY_MENU = [
   ['Hírek', 5],
@@ -163,7 +165,7 @@ export default function Footer() {
 
         <nav className="footer-col" aria-labelledby="ft-site">
           <h2 className="footer-title" id="ft-site">
-            Kutyafuttató
+            {PARK.name}
           </h2>
           <ul className="footer-list">
             <li>

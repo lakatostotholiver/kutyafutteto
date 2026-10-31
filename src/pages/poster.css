@@ -155,7 +155,8 @@ body:has(.poster) {
   justify-content: center;
   height: 100%;
   padding: 0 5mm 0 0;
-  font: 700 15.4pt/1.16 var(--font-body);
+  font: 700 15pt/1.16 var(--font-body);
+  text-wrap: pretty;
 }
 
 p.row__text {
@@ -277,7 +278,7 @@ p.row__text {
   column-count: 3;
   column-gap: 6mm;
   column-fill: balance;
-  font-size: 8.8pt;
+  font-size: 8.7pt;
   line-height: 1.2;
 }
 

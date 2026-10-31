@@ -46,7 +46,7 @@ export default function Rules() {
 
   return (
     <div className="legal">
-      <title>Házirend – Kutyafuttató – Törökbálint Város Önkormányzata</title>
+      <title>Házirend – Diósdi úti kutyafuttató – Törökbálint Város Önkormányzata</title>
 
       <div className="container legal__grid">
         <nav className="legal__nav" aria-label="A házirend fejezetei">
@@ -72,11 +72,11 @@ export default function Rules() {
         </nav>
 
         <article className="legal__body">
-          <h1>A kutyafuttató házirendje</h1>
+          <h1>A Diósdi úti kutyafuttató házirendje</h1>
           <p className="legal__meta">Utolsó módosítás: {LAST_UPDATED}</p>
 
           <p className="legal__lead">
-            A házirend a temető és a Diósdi út közötti kutyafuttató használatának szabályait tartalmazza.
+            A házirend a Diósdi úti kutyafuttató használatának szabályait tartalmazza.
           </p>
 
           <div className="alert">

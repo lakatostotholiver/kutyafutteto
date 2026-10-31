@@ -2,7 +2,7 @@
 // A futtató a temető és a Diósdi út közötti zöld területen van; a térképen csak egy jelölő mutatja.
 
 export const PARK = {
-  name: 'Kutyafuttató',
+  name: 'Diósdi úti kutyafuttató',
   position: [47.433, 18.92726],
   place: 'A temető és a Diósdi út között',
   placeDetail: 'A temető és a Diósdi út közötti zöld terület',

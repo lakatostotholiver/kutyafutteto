@@ -13,7 +13,7 @@ const GROUPS = [
   {
     title: 'Milyen szabályok érvényesek?',
     rows: [
-      { label: 'A kutyafuttató házirendje', link: { to: '/hazirend', text: 'Házirend' }, status: 'Kötelező', tone: 'red' },
+      { label: 'A Diósdi úti kutyafuttató házirendje', link: { to: '/hazirend', text: 'Házirend' }, status: 'Kötelező', tone: 'red' },
       {
         label: 'A mindenkori törökbálinti együttélési szabályok',
         link: { href: CITY.regulationsUrl, text: 'A város rendeletei' },
@@ -28,7 +28,7 @@ export default function UsageTable() {
   return (
     <div className="usage">
       <table className="usage-table">
-        <caption className="sr-only">A kutyafuttató használati szabályai</caption>
+        <caption className="sr-only">A Diósdi úti kutyafuttató használati szabályai</caption>
         <colgroup>
           <col />
           <col className="usage-table__status-col" />

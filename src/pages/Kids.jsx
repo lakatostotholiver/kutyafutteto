@@ -36,7 +36,7 @@ export default function Kids() {
 
   return (
     <>
-      <title>Gyerekeknek – Kutyafuttató – Törökbálint Város Önkormányzata</title>
+      <title>Gyerekeknek – Diósdi úti kutyafuttató – Törökbálint Város Önkormányzata</title>
 
       <section className="hero" aria-labelledby="kids-title">
         <div className="container hero__grid">

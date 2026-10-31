@@ -1,4 +1,4 @@
-// A kutyafuttató házirendje. A webes oldal és a nyomtatható PDF is ebből készül.
+// A Diósdi úti kutyafuttató házirendje. A webes oldal és a nyomtatható PDF is ebből készül.
 
 import { Ban, CigaretteOff, Dog, Eye, HeartPulse, PawPrint, Syringe, Trash2, Users } from 'lucide-react'
 
@@ -6,15 +6,15 @@ export const LAST_UPDATED = '2026. október 31.'
 
 // A dohányzási tilalom szövege: a házirend, a főoldal és a plakát is ezt használja
 export const SMOKING_BAN =
-  'A kutyafuttató területén dohányozni, valamint e-cigarettát, hevített dohányterméket és más, dohányzást imitáló terméket használni szigorúan tilos.'
+  'A Diósdi úti kutyafuttató területén dohányozni, valamint e-cigarettát, hevített dohányterméket és más, dohányzást imitáló terméket használni szigorúan tilos.'
 
 export const RULE_GROUPS = [
   {
     id: 'altalanos',
     title: 'Általános tudnivalók',
     items: [
-      { text: 'A kutyafuttató üzemeltetője a Törökbálinti Városgondnokság.' },
-      { text: 'A kutyafuttatót mindenki használhatja, aki a házirendet betartja. A területre lépéssel a látogató a házirendet elfogadja.' },
+      { text: 'A Diósdi úti kutyafuttató üzemeltetője a Törökbálinti Városgondnokság.' },
+      { text: 'A Diósdi úti kutyafuttatót mindenki használhatja, aki a házirendet betartja. A területre lépéssel a látogató a házirendet elfogadja.' },
       {
         text: 'A futtató kizárólag a kutyával való játékra szolgál, más célra nem használható. A területen kerékpározni, rollerezni és labdajátékot játszani tilos, más állatot bevinni nem szabad.',
         important: true,
