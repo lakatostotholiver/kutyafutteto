@@ -28,7 +28,7 @@ export default function ParkMap() {
         <Popup>
           <strong>{PARK.name}</strong>
           <br />
-          {PARK.placeDetail}
+          {PARK.street}, Törökbálint
           <br />
           <a href={OSM_ROUTE_URL} target="_blank" rel="noopener">
             Útvonaltervezés

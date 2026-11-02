@@ -173,7 +173,6 @@ export default function Poster() {
       <section className="sheet">
         <header className="head">
           <h1 className="head__title">{PARK.name}</h1>
-          <p className="head__sub">Házirend · {PARK.place}</p>
         </header>
 
         <div className="body">

@@ -64,8 +64,11 @@ body:has(.poster) {
 .head {
   flex: none;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 33mm;
-  padding-top: 3.5mm;
+  padding-bottom: 1mm;
   border: 1mm solid #fff;
   border-radius: var(--p-corner) var(--p-corner) 0 0;
   text-align: center;
@@ -74,20 +77,13 @@ body:has(.poster) {
 .head__title {
   margin: 0;
   color: #fff;
-  font: 700 50pt/1 var(--font-body);
+  font: 700 56pt/1 var(--font-body);
   letter-spacing: 0;
   text-shadow: .55mm .55mm 0 var(--p-ink);
 }
 
-.head__sub {
-  margin-top: 1.2mm;
-  color: #fff;
-  font: 600 13.5pt/1.1 var(--font-body);
-}
-
 .head--small {
   height: 21mm;
-  padding-top: 2.4mm;
 }
 
 .head--small .head__title {

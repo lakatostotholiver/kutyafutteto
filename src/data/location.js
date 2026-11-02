@@ -1,11 +1,10 @@
 // Koordináták az OpenStreetMap adataiból (© OpenStreetMap közreműködők, ODbL).
-// A futtató a temető és a Diósdi út közötti zöld területen van; a térképen csak egy jelölő mutatja.
+// A futtató helyét a térképen egy jelölő mutatja.
 
 export const PARK = {
   name: 'Diósdi úti kutyafuttató',
   position: [47.433, 18.92726],
-  place: 'A temető és a Diósdi út között',
-  placeDetail: 'A temető és a Diósdi út közötti zöld terület',
+  street: 'Diósdi út',
   town: '2045 Törökbálint',
 }
 

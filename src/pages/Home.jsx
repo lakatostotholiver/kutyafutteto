@@ -17,7 +17,7 @@ const FAQ = [
     q: 'Hol található a Diósdi úti kutyafuttató?',
     a: (
       <>
-        Törökbálinton, a temető és a Diósdi út közötti zöld területen. A pontos hely a <a href="#helyszin">térképen</a> látható.
+        Törökbálinton, a Diósdi úton. A pontos hely a <a href="#helyszin">térképen</a> látható.
       </>
     ),
   },
@@ -61,8 +61,7 @@ export default function Home() {
           <div className="hero__text">
             <h1 id="hero-title">{PARK.name}</h1>
             <p className="hero__lead">
-              A Diósdi úti kutyafuttató Törökbálinton, a temető és a Diósdi út közötti zöld területen található. A területen a kutyák
-              póráz nélkül játszhatnak.
+              A Diósdi úti kutyafuttató Törökbálinton található. A területen a kutyák póráz nélkül játszhatnak.
             </p>
 
             <dl className="facts">
@@ -71,7 +70,9 @@ export default function Home() {
                   <PinIcon />
                   Helyszín
                 </dt>
-                <dd>{PARK.placeDetail}</dd>
+                <dd>
+                  {PARK.town}, {PARK.street}
+                </dd>
               </div>
               <div className="facts__row">
                 <dt>
@@ -131,11 +132,11 @@ export default function Home() {
               <ParkMap />
             </div>
             <div className="location__info panel-box">
-              <h3>{PARK.place}</h3>
+              <h3>{PARK.name}</h3>
               <address>
                 {PARK.town}
                 <br />
-                {PARK.placeDetail}
+                {PARK.street}
               </address>
               <div className="location__actions">
                 <a className="button" href={OSM_ROUTE_URL} target="_blank" rel="noopener">
